@@ -12,6 +12,18 @@
       "values": ["Release", "Debug"],
       "defaultValue": "Debug"
     },
+    "BuildPackageLibraryReferences": {
+      "description": "Enables/Disables building libraries referenced by packages.",
+      "valueType": "property",
+      "values": ["True", "False"],
+      "defaultValue": true
+    },
+    "OfficialBuildId": {
+      "description": "Specifies the SeedDate and the revision of the build to generate the version of the libraries.",
+      "valueType": "property",
+      "values": [],
+      "defaultValue": ""
+    },
     "CloudDropAccountName": {
       "description": "Azure account name.",
       "valueType": "property",
@@ -111,7 +123,7 @@
         "packages": {
           "description": "Builds the NuGet packages.",
           "settings": {
-            "Project": "netstandard/pkg/NETStandard.Library2.pkgproj",
+            "Project": "netstandard/package.builds",
             "FilterToOSGroup":"default",
             "MsBuildLogging":"/flp:v=normal;LogFile=build-packages.log"
           }
@@ -207,7 +219,7 @@
       "defaultValues": {
         "toolName": "msbuild",
         "settings": {
-          "Project": "netstandard/pkg/publish.proj",
+          "Project": "netstandard/pkg/packages.builds",
           "MsBuildLogging":"/flp:v=normal;LogFile=publish-packages.log"
         }
       }
@@ -231,7 +243,7 @@
       "osSpecific": {
         "windows": {
           "filesExtension": "cmd"
-        },
+        }
       },
       "valueTypes": {}
     }
